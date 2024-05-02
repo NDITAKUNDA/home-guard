@@ -7,6 +7,20 @@ for suspicious activities, and take proactive measures to ensure the safety of t
 the intelligent security system empowers you to stay connected and in control, making your home a safer place to live.
 # Folder Structure
 I will explain how the peoject is structured and some of the files that are included in the project.
+### controllers:
+Contains controller files responsible for handling business logic and interaction between models and views.
+### models: 
+Contains model files that define the structure of data and interact with the database.
+### public: 
+Contains static assets such as CSS, JavaScript, and images that are served directly to clients.
+### routes: 
+Contains route files that define the application's endpoints and route handlers.
+### views: 
+Contains view templates (EJS files) that are rendered and sent to clients.
+### app.js: 
+The main entry point of the application where the Express server is created and configured.
+### package.json: 
+Contains project metadata, dependencies, and scripts required for managing the project with npm.
 # Installation
 ### 1. Clone the repository.
 If you haven't already, clone the repository containing your Node.js project.
