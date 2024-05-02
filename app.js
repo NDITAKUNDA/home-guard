@@ -26,6 +26,17 @@ app.use('/api/services', serviceRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/', webRoutes);
 
+// Middleware to handle 404 errors
+app.use(function(req, res, next) {
+  res.status(404).render("404");
+});
+
+// Error-handling middleware function
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
 // Connect to MongoDB
 const DB_URL = 'mongodb://127.0.0.1:27017/homeGuard'; // Update with your database URL
 mongoose.connect(DB_URL)

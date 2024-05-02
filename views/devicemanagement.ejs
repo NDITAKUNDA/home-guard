@@ -1,39 +1,41 @@
 <%- include('partials/header') %>
 
-<%- include('partials/navigationBar') %>
+    <%- include('partials/navigationBar') %>
 
-    <div class="container">
-        <div class="col m-2">
-            <h2>Device Management</h2>
-            <p>manage, monitor and customize your devices effortlessely</p>
-            <div class="row p-3 rounded justify-content-center">
-                <div class="col-6 d-grid gap-2">
-                    <button type="button" class="btn" style="color: #03191E; outline: 1px solid #333;">Disarm</button>
-                </div>
-                <div class="col-6 d-grid gap-2">
-                    <button type="button" class="btn"
-                        style="background-color: #03191E; color: #20A4F3; outline: 1px solid #333;">Lock Down</button>
-                </div>
-            </div>
-            <div class="col">
-                <% devices.forEach(device=> { %>
-                    <div class="row my-2 p-3 rounded" style="outline: 1px solid #333;">
-                        <div class="col-8">
-                            <h2>
-                                <%= device.name %>
-                            </h2>
-                            <span>Status: <%= device.status ? 'Online' : 'Offline' %></span>
-                        </div>
-                        <div class="col-4 text-center align-middle">
-                            <!-- Set isOn to 'on' if status is true (online), otherwise set it to 'off' -->
-                            <input type="checkbox" class="theme-checkbox" <%=device.status ? 'checked' : '' %>
-                            <%= device.status ? '' : 'disabled' %>>
-                        </div>
+        <div class="container">
+            <div class="col m-2">
+                <h2>Device Management</h2>
+                <p>manage, monitor and customize your devices effortlessely</p>
+                <div class="row p-3 rounded justify-content-center">
+                    <div class="col-6 d-grid gap-2">
+                        <button type="button" class="btn"
+                            style="color: #03191E; outline: 1px solid #333;">Disarm</button>
                     </div>
-                    <% }); %>
+                    <div class="col-6 d-grid gap-2">
+                        <button type="button" class="btn"
+                            style="background-color: #03191E; color: #20A4F3; outline: 1px solid #333;">Lock
+                            Down</button>
+                    </div>
+                </div>
+                <div class="col" style="padding-bottom: 60px;">
+                    <% devices.forEach(device=> { %>
+                        <div class="row my-2 p-3 rounded devices" style="outline: 1px solid #333;">
+                            <div class="col-8">
+                                <h2>
+                                    <%= device.name %>
+                                </h2>
+                                <span>Status: <%= device.status ? 'Online' : 'Offline' %></span>
+                            </div>
+                            <div class="col-4 text-center align-middle">
+                                <form action="/services/devices/<%= device._id %>" method="post" class="clickableForm">
+                                    <input type="checkbox" class="theme-checkbox" <%=device.isOn==='on' ? 'checked' : ''%> <%= device.status ? '' : 'disabled' %>>
+                                </form>
+                            </div>
+                        </div>
+                        <% }); %>
 
+                </div>
             </div>
         </div>
-    </div>
 
-    <%- include('partials/footer') %>
+        <%- include('partials/footer') %>

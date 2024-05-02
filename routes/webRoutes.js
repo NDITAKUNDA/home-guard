@@ -17,4 +17,6 @@ router.get("/services/guestaccess", webController.getGuestAccess);
 
 router.get("/services/emergency", webController.getEmergency);
 
+router.post("/services/devices/:id", webController.updateDeviceStatus);
+
 module.exports = router;

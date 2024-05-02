@@ -76,6 +76,20 @@ exports.getGuestAccess = async (req, res) => {
   }
 };
 
+exports.updateDeviceStatus = async (req, res) => {
+  try {
+    const response = await axios.put(`http://localhost:3000/api/devices/${req.params.id}/toggle-status`);
+    const currentPath = req.originalUrl;
+    if (currentPath.includes("/services/devicemanagement")) {
+      res.redirect("/services/devicemanagement");
+    } else {
+      res.redirect("/services/guestaccess");
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 exports.getEmergency = async (req, res) => {
   res.render("emergency", { pageTitle: "Emergency" });
 };

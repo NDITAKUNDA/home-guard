@@ -11,7 +11,7 @@
         <p class="text-center" style="color: #941C2F;">these settings last for only an hour</p>
         <div class="col">
             <% devices.forEach(device=> { %>
-                <div class="row my-2 p-3 rounded" style="outline: 1px solid #333;">
+                <div class="row my-2 p-3 rounded devices" style="outline: 1px solid #333;">
                     <div class="col-8">
                         <h2>
                             <%= device.name %>
@@ -19,9 +19,9 @@
                         <span>Status: <%= device.status ? 'Online' : 'Offline' %></span>
                     </div>
                     <div class="col-4 text-center align-middle">
-                        <!-- Set isOn to 'on' if status is true (online), otherwise set it to 'off' -->
-                        <input type="checkbox" class="theme-checkbox" <%=device.status ? 'checked' : '' %>
-                        <%= device.status ? '' : 'disabled' %>>
+                        <form action="/services/devices/<%= device._id %>" method="post" class="clickableForm">
+                            <input type="checkbox" class="theme-checkbox" <%=device.isOn==='on' ? 'checked' : ''%> <%= device.status ? '' : 'disabled' %>>
+                        </form>
                     </div>
                 </div>
                 <% }); %>

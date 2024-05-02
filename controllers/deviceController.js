@@ -32,16 +32,17 @@ exports.updateDeviceStatus = async (req, res) => {
     if (!device) {
       return res.status(404).json({ message: 'Device not found' });
     }
-
-    // Toggle the status of the device
-    device.status = !device.status;
-
+  
+    // Toggle the isOn status of the device
+    device.isOn = (device.isOn === 'on') ? 'off' : 'on';
+  
     // Save the updated device
     const updatedDevice = await device.save();
-
+  
     // Send the updated device as response
     res.status(200).json(updatedDevice);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
+  
 };

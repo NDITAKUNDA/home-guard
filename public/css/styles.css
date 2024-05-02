@@ -7,7 +7,7 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
-div.card {
+form.card {
   width: 200px;
 }
 .theme-checkbox {
@@ -73,7 +73,7 @@ div.card {
 }
 .indicator {
   content: "";
-  width: 200px;
+  width: 20%;
   height: 35px;
   background: #ffffff;
   position: absolute;
@@ -86,7 +86,7 @@ div.card {
   transition: all 0.2s ease-out;
 }
 .tab {
-  width: 200px;
+  width: 20%;
   height: 35px;
   position: absolute;
   z-index: 99;
@@ -94,7 +94,7 @@ div.card {
   opacity: 0;
 }
 .tab_label {
-  width: 200px;
+  width: 20%;
   height: 35px;
   position: relative;
   z-index: 999;
@@ -110,22 +110,37 @@ div.card {
   left: 2px;
 }
 .tab--2:checked ~ .indicator {
-  left: calc(200px + 2px);
+  left: calc(20% + 2px);
 }
 .tab--3:checked ~ .indicator {
-  left: calc(200px * 2 + 2px);
+  left: calc(20% * 2 + 2px);
 }
 .tab--4:checked ~ .indicator {
-  left: calc(200px * 3 + 2px);
+  left: calc(20% * 3 + 2px);
 }
 .tab--5:checked ~ .indicator {
-  left: calc(200px * 4 + 2px);
+  left: calc(20% * 4 + 2px);
 }
 
 
 @media (max-width: 576px) {
-  div.card {
+  form.card {
     width: 150px;
+  }
+  div.devices h2 {
+    font-size: 20px;
+  }
+  .theme-checkbox {
+    width: 60px;
+    height: 30px;
+  }
+  .theme-checkbox::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+  }
+  .theme-checkbox:checked::before {
+    left: calc(100% - 30px);
   }
   .indicator {
     width: 20%;
@@ -142,18 +157,5 @@ div.card {
   }
   .mobile {
     display: block;
-  }
-  .tab--2:checked ~ .indicator {
-    left: calc(20% + 2px);
-  }
-  .tab--3:checked ~ .indicator {
-    left: calc(20% * 2 + 2px);
-  }
-  .tab--4:checked ~ .indicator {
-    left: calc(20% * 3 + 2px);
-  }
-  .tab--5:checked ~ .indicator {
-    left: calc(20% * 4 + 2px);
-  }
-  
+  }  
 }

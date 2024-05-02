@@ -5,7 +5,10 @@
     <div class="container">
         <div class="row  d-flex justify-content-center">
             <% services.forEach(service=> { %>
-                <div class="text-center card m-2">
+                <%
+                    var routeToVisit = service.name.replace(/\W+/g, '').toLowerCase();
+                %>
+                <form class="text-center card m-2 clickableForm" action="/services/<%= routeToVisit %>" method="get">
                     <figure class="figure">
                         <i class="bi <%= getServiceIconClass(service.name) %>" style="font-size: 8vw;"></i>
                         <br>
@@ -16,7 +19,7 @@
                             <%= service.description %>
                         </figcaption>
                     </figure>
-                </div>
+                </form>
                 <% }); %>
         </div>
         <% function getServiceIconClass(serviceName) { 
