@@ -6,23 +6,18 @@ const deviceSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  type: {
-    type: String,
-    required: true
-  },
-  location: {
-    type: String,
-    required: true
-  },
   status: {
     type: Boolean,
     default: true
   },
+  isOn: {
+    type: String,
+    required: true
+  },
   last_updated: {
     type: Date,
     default: Date.now
-  },
-  // Additional fields specific to each device type can be added here
+  }
 });
 
 // Create the Device model

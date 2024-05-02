@@ -1,0 +1,50 @@
+<%- include('partials/header') %>
+
+<div class="container vh-100 d-flex"">
+    <div class="row align-items-center justify-content-center flex-fill">
+        <div class="col-md-3 col-lg-6">
+            <h2>Home Guard</h2>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <form>
+                <!-- Username input -->
+                <div class="row my-5" style="border-bottom: 2px solid #941C2F;">
+                    <div class="col-auto">
+                        <i class="bi bi-person" style="font-size: 30px;color: #941C2F;"></i>
+                    </div>
+                    <div class="col-auto">
+                        <input class="form-control form-control-lg form-control-plaintext" type="text" placeholder="Username">
+                    </div>
+                </div>
+              
+                <!-- Password input -->
+                <div class="row my-5" style="border-bottom: 2px solid #941C2F;">
+                    <div class="col-auto">
+                        <i class="bi bi-lock" style="font-size: 30px;color: #941C2F;"></i>
+                    </div>
+                    <div class="col-auto">
+                        <input class="form-control form-control-lg form-control-plaintext" type="password" placeholder="Password">
+                    </div>
+                </div>
+              
+                <!-- 2 column grid layout for inline styling -->
+                <div class="row mb-4">
+                  <div class="col d-flex justify-content-center">
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                      <label class="form-check-label" for="form2Example31"> Remember me </label>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Submit button -->
+                <div class="d-grid gap-2">
+                    <button type="button" class="btn mb-4" style="background-color: #20A4F3; color: #03191E;">Sign in</button>
+                </div>
+              </form>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,159 @@
+body {
+  background-color: #c1cfda;
+  height: 100dvh;
+  overflow-y: scroll;
+  position: relative;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+div.card {
+  width: 200px;
+}
+.theme-checkbox {
+    --toggle-size: 16px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 80px;
+    height: 40px;
+    background: -webkit-gradient(linear, left top, right top, color-stop(50%, #efefef), color-stop(50%, #20A4F3)) no-repeat;
+    background: -o-linear-gradient(left, #efefef 50%, #20A4F3 50%) no-repeat;
+    background: linear-gradient(to right, #efefef 50%, #20A4F3 50%) no-repeat;
+    background-size: 205%;
+    background-position: 0;
+    -webkit-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 99em;
+    position: relative;
+    cursor: pointer;
+    font-size: var(--toggle-size);
+}
+.theme-checkbox::before {
+    content: "";
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    background: -webkit-gradient(linear, left top, right top, color-stop(50%, #efefef), color-stop(50%, #20A4F3)) no-repeat;
+    background: -o-linear-gradient(left, #efefef 50%, #20A4F3 50%) no-repeat;
+    background: linear-gradient(to right, #efefef 50%, #20A4F3 50%) no-repeat;
+    background-size: 205%;
+    background-position: 100%;
+    border-radius: 50%;
+    -webkit-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+}
+.theme-checkbox:checked::before {
+    left: calc(100% - 40px);
+    background-position: 0;
+}
+.theme-checkbox:checked {
+    background-position: 100%;
+}
+.mobile {
+  display: none;
+}
+.tab-container {
+  width: 90%;
+  position: fixed;
+  bottom: 50px;
+  z-index: 10;
+  left: 5%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2px;
+  background-color: #dadadb;
+  border-radius: 9px;
+  backdrop-filter: blur(5px);
+}
+.indicator {
+  content: "";
+  width: 200px;
+  height: 35px;
+  background: #ffffff;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  z-index: 9;
+  border: 0.5px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);
+  border-radius: 7px;
+  transition: all 0.2s ease-out;
+}
+.tab {
+  width: 200px;
+  height: 35px;
+  position: absolute;
+  z-index: 99;
+  outline: none;
+  opacity: 0;
+}
+.tab_label {
+  width: 200px;
+  height: 35px;
+  position: relative;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  font-size: 25px;
+  opacity: 0.6;
+  cursor: pointer;
+}
+.tab--1:checked ~ .indicator {
+  left: 2px;
+}
+.tab--2:checked ~ .indicator {
+  left: calc(200px + 2px);
+}
+.tab--3:checked ~ .indicator {
+  left: calc(200px * 2 + 2px);
+}
+.tab--4:checked ~ .indicator {
+  left: calc(200px * 3 + 2px);
+}
+.tab--5:checked ~ .indicator {
+  left: calc(200px * 4 + 2px);
+}
+
+
+@media (max-width: 576px) {
+  div.card {
+    width: 150px;
+  }
+  .indicator {
+    width: 20%;
+    height: 35px;
+  }
+  .tab {
+    width: 20%;
+  }
+  .tab_label {
+    width: 20%;
+  }
+  .tab_label span {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
+  .tab--2:checked ~ .indicator {
+    left: calc(20% + 2px);
+  }
+  .tab--3:checked ~ .indicator {
+    left: calc(20% * 2 + 2px);
+  }
+  .tab--4:checked ~ .indicator {
+    left: calc(20% * 3 + 2px);
+  }
+  .tab--5:checked ~ .indicator {
+    left: calc(20% * 4 + 2px);
+  }
+  
+}

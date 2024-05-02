@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+
+<%- include('partials/navigationBar') %>
+
+    <div class="container">
+        <div class="row  d-flex justify-content-center">
+            <% services.forEach(service=> { %>
+                <div class="text-center card m-2">
+                    <figure class="figure">
+                        <i class="bi <%= getServiceIconClass(service.name) %>" style="font-size: 8vw;"></i>
+                        <br>
+                        <span>
+                            <%= service.name %>
+                        </span>
+                        <figcaption class="figure-caption">
+                            <%= service.description %>
+                        </figcaption>
+                    </figure>
+                </div>
+                <% }); %>
+        </div>
+        <% function getServiceIconClass(serviceName) { 
+            switch (serviceName) { 
+                case 'Device Management' :
+                    return 'bi-tools' ; 
+                case 'Live Feed' : 
+                    return 'bi-camera' ; 
+                case 'Event Logs' : 
+                    return 'bi-journal' ;
+                case 'Emergency' : 
+                    return 'bi-exclamation-circle' ; 
+                case 'Guest Access' : 
+                    return 'bi-people' ; 
+                case 'Learn' : 
+                    return 'bi-book' ; 
+                default: 
+                    return 'bi-gear' ;
+                } 
+            } 
+        %>
+    </div>
+
+    <%- include('partials/footer') %>

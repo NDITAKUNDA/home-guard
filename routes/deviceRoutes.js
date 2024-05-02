@@ -8,4 +8,7 @@ router.get('/', deviceController.getAllDevices);
 // GET a single device by ID
 router.get('/:id', deviceController.getDeviceById);
 
+// PUT update the status of an existing device
+router.put('/:id/toggle-status', deviceController.updateDeviceStatus);
+
 module.exports = router;

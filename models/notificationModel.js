@@ -2,9 +2,8 @@ const mongoose = require('mongoose');
 
 // Define the schema for the Notification model
 const notificationSchema = new mongoose.Schema({
-  device_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Device',
+  deviceName: {
+    type: String,
     required: true
   },
   message: {
