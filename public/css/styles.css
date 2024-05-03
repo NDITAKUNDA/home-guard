@@ -123,6 +123,14 @@ form.card {
 }
 
 
+div.d-grid.login button.btn {
+  background-color: #20A4F3;
+   color: #03191E;
+   font-size: 20px;
+   font-weight: 600;
+   padding-block: 10px;
+}
+
 @media (max-width: 576px) {
   form.card {
     width: 150px;

@@ -8,6 +8,8 @@ router.get('/', webController.getLoginPage);
 // GET services page
 router.get('/services', webController.getServicesPage);
 
+router.post('/services', webController.postLogin);
+
 // GET a service
 router.get("/services/devicemanagement", webController.getDeviceManagement);
 

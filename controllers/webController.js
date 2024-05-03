@@ -5,6 +5,18 @@ exports.getLoginPage = async (req, res) => {
   res.render("login", { pageTitle: "Login Page" });
 };
 
+exports.postLogin = async (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  if (username === 'admin' && password === 'password') {
+    res.redirect('/services');
+  } else {
+    res.send('Invalid username or password');
+  }
+};
+
+
 exports.getServicesPage = async (req, res) => {
   try {
     const apiResponse = await axios.get("http://localhost:3000/api/services");
