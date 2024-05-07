@@ -9,50 +9,71 @@ body::-webkit-scrollbar {
 }
 form.card {
   width: 200px;
+  max-width: 250px;
+}
+form.card i.bi {
+  font-size: 8vw;
+}
+form.card figcaption.figure-caption {
+  margin-top: 20px;
 }
 .theme-checkbox {
-    --toggle-size: 16px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 80px;
-    height: 40px;
-    background: -webkit-gradient(linear, left top, right top, color-stop(50%, #efefef), color-stop(50%, #20A4F3)) no-repeat;
-    background: -o-linear-gradient(left, #efefef 50%, #20A4F3 50%) no-repeat;
-    background: linear-gradient(to right, #efefef 50%, #20A4F3 50%) no-repeat;
-    background-size: 205%;
-    background-position: 0;
-    -webkit-transition: 0.4s;
-    -o-transition: 0.4s;
-    transition: 0.4s;
-    border-radius: 99em;
-    position: relative;
-    cursor: pointer;
-    font-size: var(--toggle-size);
+  --toggle-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 80px;
+  height: 40px;
+  background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      color-stop(50%, #efefef),
+      color-stop(50%, #20a4f3)
+    )
+    no-repeat;
+  background: -o-linear-gradient(left, #efefef 50%, #20a4f3 50%) no-repeat;
+  background: linear-gradient(to right, #efefef 50%, #20a4f3 50%) no-repeat;
+  background-size: 205%;
+  background-position: 0;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 99em;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--toggle-size);
 }
 .theme-checkbox::before {
-    content: "";
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    background: -webkit-gradient(linear, left top, right top, color-stop(50%, #efefef), color-stop(50%, #20A4F3)) no-repeat;
-    background: -o-linear-gradient(left, #efefef 50%, #20A4F3 50%) no-repeat;
-    background: linear-gradient(to right, #efefef 50%, #20A4F3 50%) no-repeat;
-    background-size: 205%;
-    background-position: 100%;
-    border-radius: 50%;
-    -webkit-transition: 0.4s;
-    -o-transition: 0.4s;
-    transition: 0.4s;
+  content: "";
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      color-stop(50%, #efefef),
+      color-stop(50%, #20a4f3)
+    )
+    no-repeat;
+  background: -o-linear-gradient(left, #efefef 50%, #20a4f3 50%) no-repeat;
+  background: linear-gradient(to right, #efefef 50%, #20a4f3 50%) no-repeat;
+  background-size: 205%;
+  background-position: 100%;
+  border-radius: 50%;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
 }
 .theme-checkbox:checked::before {
-    left: calc(100% - 40px);
-    background-position: 0;
+  left: calc(100% - 40px);
+  background-position: 0;
 }
 .theme-checkbox:checked {
-    background-position: 100%;
+  background-position: 100%;
 }
 .mobile {
   display: none;
@@ -121,19 +142,23 @@ form.card {
 .tab--5:checked ~ .indicator {
   left: calc(20% * 4 + 2px);
 }
-
-
-div.d-grid.login button.btn {
-  background-color: #20A4F3;
-   color: #03191E;
-   font-size: 20px;
-   font-weight: 600;
-   padding-block: 10px;
+div.login-form div.login.gap-2 button.btn.mb-4 {
+  background-color: #03191e;
+  color: #efefef;
+  font-size: 20px;
+  font-weight: 600;
+  padding-block: 10px;
 }
 
 @media (max-width: 576px) {
   form.card {
-    width: 150px;
+    width: 170px;
+  }
+  form.card figcaption.figure-caption {
+    font-size: 16px;
+  }
+  form.card i.bi {
+    font-size: 50px;
   }
   div.devices h2 {
     font-size: 20px;
@@ -165,5 +190,15 @@ div.d-grid.login button.btn {
   }
   .mobile {
     display: block;
-  }  
+  }
+  /* Styles for the login page */
+  div.login-form div.col-md-3 h2 {
+    text-align: center;
+  }
+  div.login-form div.col-md-6 {
+    width: 90%;
+  }
+  div.row.my-5 div.col-auto:last-child {
+    width: 80%;
+  }
 }

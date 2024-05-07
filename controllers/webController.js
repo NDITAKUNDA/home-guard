@@ -1,40 +1,43 @@
 const axios = require("axios");
 
-// Controller function to get all devices
+// GET Login Page
 exports.getLoginPage = async (req, res) => {
   res.render("login", { pageTitle: "Login Page" });
 };
 
+// GET system access
 exports.postLogin = async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
 
-  if (username === 'admin' && password === 'password') {
-    res.redirect('/services');
+  if (username === "admin" && password === "password") {
+    res.redirect("/services");
   } else {
-    res.send('Invalid username or password');
+    res.send("Invalid username or password");
   }
 };
 
+// GET Notifications Page
 exports.getNotificationPage = async (req, res) => {
   try {
-    const apiResponse = await axios.get("http://localhost:3000/api/notifications");
-
+    const apiResponse = await axios.get(
+      "http://localhost:3000/api/notifications"
+    );
     // Extract the data from the API response
-    const notificationData= apiResponse.data;
-
+    const notificationData = apiResponse.data;
+    const lastTenNotifications = notificationData.slice(-10);
     res.render("notifications", {
       pageTitle: "Notifications",
-      notifications: notificationData,
+      notifications: lastTenNotifications,
     });
-    console.log(notificationData);
   } catch (error) {
     // Handle errors appropriately
     console.error("Error fetching services data:", error);
     res.status(500).send("Error fetching services data");
   }
-}
+};
 
+// GET Services Page
 exports.getServicesPage = async (req, res) => {
   try {
     const apiResponse = await axios.get("http://localhost:3000/api/services");
@@ -51,6 +54,7 @@ exports.getServicesPage = async (req, res) => {
   }
 };
 
+// GET Device Management Page
 exports.getDeviceManagement = async (req, res) => {
   try {
     const apiResponse = await axios.get("http://localhost:3000/api/devices");
@@ -69,12 +73,15 @@ exports.getDeviceManagement = async (req, res) => {
   }
 };
 
+// GET EVent Logs Page
 exports.getEventLogs = async (req, res) => {
   try {
-    const apiResponse = await axios.get("http://localhost:3000/api/notifications");
+    const apiResponse = await axios.get(
+      "http://localhost:3000/api/notifications"
+    );
 
     // Extract the data from the API response
-    const notificationData= apiResponse.data;
+    const notificationData = apiResponse.data;
 
     res.render("eventlogs", {
       pageTitle: "Event Logs",
@@ -88,6 +95,7 @@ exports.getEventLogs = async (req, res) => {
   }
 };
 
+// Get Guest Access Page
 exports.getGuestAccess = async (req, res) => {
   try {
     const apiResponse = await axios.get("http://localhost:3000/api/devices");
@@ -106,9 +114,12 @@ exports.getGuestAccess = async (req, res) => {
   }
 };
 
+// Turn Device ON or OFF
 exports.updateDeviceStatus = async (req, res) => {
   try {
-    const response = await axios.put(`http://localhost:3000/api/devices/${req.params.id}/toggle-status`);
+    const response = await axios.put(
+      `http://localhost:3000/api/devices/${req.params.id}/toggle-status`
+    );
     const currentPath = req.originalUrl;
     if (currentPath.includes("/services/devicemanagement")) {
       res.redirect("/services/devicemanagement");
@@ -120,6 +131,35 @@ exports.updateDeviceStatus = async (req, res) => {
   }
 };
 
+// GET emergency page
 exports.getEmergency = async (req, res) => {
   res.render("emergency", { pageTitle: "Emergency" });
 };
+
+// Turn On all devices
+exports.turnOnAllDevices = async (req, res) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:3000/api/devices/turnOnAll`
+    );
+    if (response.data.message === "All devices turned on") {
+      res.redirect("/services/devicemanagement");
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
+
+// Shut OFF all devices
+exports.turnOffAllDevices = async (req, res) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:3000/api/devices/shutAll`
+    );
+    if (response.data.message === "All devices shut down") {
+      res.redirect("/services/devicemanagement");
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}

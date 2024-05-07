@@ -10,12 +10,12 @@
                 %>
                 <form class="text-center card m-2 clickableForm" action="/services/<%= routeToVisit %>" method="get">
                     <figure class="figure">
-                        <i class="bi <%= getServiceIconClass(service.name) %>" style="font-size: 8vw;"></i>
+                        <i class="bi <%= getServiceIconClass(service.name) %>"></i>
                         <br>
-                        <span>
+                        <span id="service-name">
                             <%= service.name %>
                         </span>
-                        <figcaption class="figure-caption">
+                        <figcaption class="figure-caption service-description">
                             <%= service.description %>
                         </figcaption>
                     </figure>

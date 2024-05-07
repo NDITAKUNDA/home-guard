@@ -7,15 +7,15 @@
                 <h2>Device Management</h2>
                 <p>manage, monitor and customize your devices effortlessely</p>
                 <div class="row p-3 rounded justify-content-center">
-                    <div class="col-6 d-grid gap-2">
-                        <button type="button" class="btn"
+                    <form action="/services/devicemanagement/turnoff" method="post" class="col-6 d-grid gap-2">
+                        <button type="submit" class="btn"
                             style="color: #03191E; outline: 1px solid #333;">Disarm</button>
-                    </div>
-                    <div class="col-6 d-grid gap-2">
-                        <button type="button" class="btn"
+                    </form>
+                    <form action="/services/devicemanagement/turnon" method="post" class="col-6 d-grid gap-2">
+                        <button type="submit" class="btn" id="turnOnButton"
                             style="background-color: #03191E; color: #20A4F3; outline: 1px solid #333;">Lock
                             Down</button>
-                    </div>
+                    </form>
                 </div>
                 <div class="col" style="padding-bottom: 60px;">
                     <% devices.forEach(device=> { %>
@@ -27,8 +27,11 @@
                                 <span>Status: <%= device.status ? 'Online' : 'Offline' %></span>
                             </div>
                             <div class="col-4 text-center align-middle">
-                                <form action="/services/devicemanagement/devices/<%= device._id %>" method="post" class="clickableForm">
-                                    <input type="checkbox" class="theme-checkbox" <%=device.isOn==='on' ? 'checked' : ''%> <%= device.status ? '' : 'disabled' %>>
+                                <form action="/services/devicemanagement/devices/<%= device._id %>" method="post"
+                                    class="clickableForm">
+                                    <input type="checkbox" class="theme-checkbox" <%=device.isOn==='on' ? 'checked' : ''
+                                        %>
+                                    <%= device.status ? '' : 'disabled' %>>
                                 </form>
                             </div>
                         </div>

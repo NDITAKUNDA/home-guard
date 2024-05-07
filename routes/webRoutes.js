@@ -8,6 +8,11 @@ router.get('/', webController.getLoginPage);
 // GET notifications
 router.get('/notifications', webController.getNotificationPage);
 
+// GET Live feed
+router.get('/services/livefeed', (req, res) => {
+    res.redirect("http://192.168.213.1/html/");
+});
+
 // GET services page
 router.get('/services', webController.getServicesPage);
 
@@ -25,5 +30,11 @@ router.get("/services/emergency", webController.getEmergency);
 router.post("/services/devicemanagement/devices/:id", webController.updateDeviceStatus);
 
 router.post("/services/guestaccess/devices/:id", webController.updateDeviceStatus);
+
+// Turn ON all devices 
+router.post("/services/devicemanagement/turnon", webController.turnOnAllDevices);
+
+// SHut OFF all devices
+router.post("/services/devicemanagement/turnoff", webController.turnOffAllDevices);
 
 module.exports = router;

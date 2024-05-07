@@ -1,33 +1,33 @@
 <%- include('partials/header') %>
 
-<%- include('partials/navigationBar') %>
+    <%- include('partials/navigationBar') %>
 
-    <div class="container">
-        <div class="col m-2">
-            <h2>Notifications</h2>
-            <p>here is what has been happening in your house in that 24hrs</p>
-            <div class="col">
-                <% notifications.forEach(notification => { %>
-                    <div class="row my-2 p-3 rounded" style="outline: 1px solid #333;">
-                        <h2 style="color: #941C2F;"><%= notification.deviceName %></h2>
-                        <span><%= getNotificationMessage(notification) %></span>
-                    </div>
-                <% }); %>
-                
-                <%
-                function getNotificationMessage(notification) {
-                    switch (notification.type) {
-                        case 'Warning':
-                            return notification.message;
-                        case 'Status Update':
-                            return `Status update: ${notification.message}`;
-                        default:
-                            return 'Unknown notification type';
-                    }
-                }
-                %>
+        <div class="container">
+            <div class="col m-2">
+                <h2>Notifications</h2>
+                <p>here is what has been happening in your house in that 24hrs</p>
+                <div class="col">
+                    <% notifications.forEach(notification=> { %>
+                        <div class="row my-2 p-3 rounded" style="outline: 1px solid #333;">
+                            <h2 style="color: #941C2F;">
+                                <%= notification.deviceName %>
+                            </h2>
+                            <p>
+                                <span>
+                                    <%= getNotificationMessage(notification) %>
+                                </span> at <i>
+                                    <span>
+                                        <%= notification.timestamp %>
+                                    </span>
+                                </i>
+                            </p>
+                        </div>
+                        <% }); %>
+
+                            <% function getNotificationMessage(notification) { switch (notification.type) {
+                                case 'Warning' : return notification.message; case 'Status Update' : return `Status
+                                update: ${notification.message}`; default: return 'Unknown notification type' ; } } %>
+                </div>
             </div>
         </div>
-    </div>
-
-    <%- include('partials/footer') %>
+        <%- include('partials/footer') %>
