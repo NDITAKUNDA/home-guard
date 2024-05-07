@@ -5,6 +5,9 @@ const webController = require('../controllers/webController');
 // GET login page
 router.get('/', webController.getLoginPage);
 
+// GET notifications
+router.get('/notifications', webController.getNotificationPage);
+
 // GET services page
 router.get('/services', webController.getServicesPage);
 
@@ -19,6 +22,8 @@ router.get("/services/guestaccess", webController.getGuestAccess);
 
 router.get("/services/emergency", webController.getEmergency);
 
-router.post("/services/devices/:id", webController.updateDeviceStatus);
+router.post("/services/devicemanagement/devices/:id", webController.updateDeviceStatus);
+
+router.post("/services/guestaccess/devices/:id", webController.updateDeviceStatus);
 
 module.exports = router;

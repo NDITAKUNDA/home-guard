@@ -27,7 +27,7 @@
                                 <span>Status: <%= device.status ? 'Online' : 'Offline' %></span>
                             </div>
                             <div class="col-4 text-center align-middle">
-                                <form action="/services/devices/<%= device._id %>" method="post" class="clickableForm">
+                                <form action="/services/devicemanagement/devices/<%= device._id %>" method="post" class="clickableForm">
                                     <input type="checkbox" class="theme-checkbox" <%=device.isOn==='on' ? 'checked' : ''%> <%= device.status ? '' : 'disabled' %>>
                                 </form>
                             </div>

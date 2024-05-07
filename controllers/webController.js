@@ -16,6 +16,24 @@ exports.postLogin = async (req, res) => {
   }
 };
 
+exports.getNotificationPage = async (req, res) => {
+  try {
+    const apiResponse = await axios.get("http://localhost:3000/api/notifications");
+
+    // Extract the data from the API response
+    const notificationData= apiResponse.data;
+
+    res.render("notifications", {
+      pageTitle: "Notifications",
+      notifications: notificationData,
+    });
+    console.log(notificationData);
+  } catch (error) {
+    // Handle errors appropriately
+    console.error("Error fetching services data:", error);
+    res.status(500).send("Error fetching services data");
+  }
+}
 
 exports.getServicesPage = async (req, res) => {
   try {

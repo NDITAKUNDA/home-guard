@@ -28,13 +28,15 @@ document.addEventListener("DOMContentLoaded", function() {
         var servicesRadio = document.getElementById("tab2");
         servicesRadio.checked = true;
     }
-});
+    if (window.location.href.includes("/notifications")) {
+        var servicesRadio = document.getElementById("tab3");
+        servicesRadio.checked = true;
+    }});
 
 // Code that changes the state of the device (On/Off)
 document.addEventListener("DOMContentLoaded", function() {
     const checkbox = document.querySelector('.theme-checkbox');
     const form = document.querySelector('.clickableForm');
-
     checkbox.addEventListener('change', function() {
         form.submit();
     });
