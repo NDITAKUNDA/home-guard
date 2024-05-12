@@ -10,7 +10,7 @@ router.get('/notifications', webController.getNotificationPage);
 
 // GET Live feed
 router.get('/services/livefeed', (req, res) => {
-    res.redirect("http://192.168.213.1/html/");
+    res.redirect("http://192.168.230.1/html/");
 });
 
 // GET services page
